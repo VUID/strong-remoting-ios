@@ -1,0 +1,23 @@
+{
+  "name": "sl-remoting-js",
+  "version": "0.0.0",
+  "description": "",
+  "main": "client.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "socket.io-client": "git://github.com/LearnBoost/socket.io-client.git",
+    "superagent": "~0.14.4"
+  },
+  "devDependencies": {
+    "sl-remoting": "git+ssh://git@github.com:strongloop/sl-remoting.git"
+  },
+  "repository": "",
+  "author": "Ritchie Martori",
+  "license": "Apache 2"
+}
