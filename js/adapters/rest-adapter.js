@@ -40,7 +40,23 @@ RestAdapter.prototype.createRequest = function (methodString, ctorArgs, args, fn
     if(err) {
       fn(err);
     } else {
-      fn(null, res.text || res.body);
+      var result;
+      var body = res.body;
+      
+      if(body) {
+        result = res.body.data || res.body;
+        
+        switch(body.type) {
+          case 'base64':
+            result = new Buffer(result, 'base64');
+          break;
+          case 'date':
+            result = new Date(result);
+          break;
+        }
+      }
+      
+      fn(null, result);
     }
   });
 }

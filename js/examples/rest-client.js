@@ -11,5 +11,6 @@ var RestAdapter = require('../adapters/rest-adapter');
 var remotes = Remotes.connect('http://localhost:3000', RestAdapter, contract);
 
 remotes.invoke('fs.readFile', {path: 'test.txt'}, function (err, data) {
-  console.log(data);
+  console.log('Buffer.isBuffer(data)', Buffer.isBuffer(data));
+  console.log(data.toString());
 });
