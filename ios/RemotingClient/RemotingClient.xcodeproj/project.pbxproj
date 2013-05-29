@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D1A838E1755747C0090FA77 /* RCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A83871755747C0090FA77 /* RCAdapter.m */; };
+		2D1A838F1755747C0090FA77 /* RCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A83871755747C0090FA77 /* RCAdapter.m */; };
+		2D1A83901755747C0090FA77 /* RCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A83891755747C0090FA77 /* RCData.m */; };
+		2D1A83911755747C0090FA77 /* RCData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A83891755747C0090FA77 /* RCData.m */; };
+		2D1A83921755747C0090FA77 /* RCRemoteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A838B1755747C0090FA77 /* RCRemoteObjects.m */; };
+		2D1A83931755747C0090FA77 /* RCRemoteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A838B1755747C0090FA77 /* RCRemoteObjects.m */; };
+		2D1A83941755747C0090FA77 /* RCRestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A838D1755747C0090FA77 /* RCRestAdapter.m */; };
+		2D1A83951755747C0090FA77 /* RCRestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A838D1755747C0090FA77 /* RCRestAdapter.m */; };
+		2D1A8399175579960090FA77 /* RCRemoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A8398175579960090FA77 /* RCRemoteObject.m */; };
+		2D1A839B175580C60090FA77 /* RCRemoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1A8398175579960090FA77 /* RCRemoteObject.m */; };
+		2DFE85EE175572D7008BCF31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFE85ED175572D7008BCF31 /* Foundation.framework */; };
+		2DFE85FD175572D7008BCF31 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFE85FC175572D7008BCF31 /* SenTestingKit.framework */; };
+		2DFE85FF175572D7008BCF31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFE85FE175572D7008BCF31 /* UIKit.framework */; };
+		2DFE8600175572D7008BCF31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFE85ED175572D7008BCF31 /* Foundation.framework */; };
+		2DFE8603175572D7008BCF31 /* libRemotingClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFE85EA175572D7008BCF31 /* libRemotingClient.a */; };
+		2DFE8609175572D7008BCF31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DFE8607175572D7008BCF31 /* InfoPlist.strings */; };
+		2DFE860C175572D7008BCF31 /* RemotingClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFE860B175572D7008BCF31 /* RemotingClientTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2DFE8601175572D7008BCF31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DFE85E2175572D7008BCF31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DFE85E9175572D7008BCF31;
+			remoteInfo = RemotingClient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2DFE85E8175572D7008BCF31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2D1A83861755747C0090FA77 /* RCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCAdapter.h; sourceTree = "<group>"; };
+		2D1A83871755747C0090FA77 /* RCAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCAdapter.m; sourceTree = "<group>"; };
+		2D1A83881755747C0090FA77 /* RCData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCData.h; sourceTree = "<group>"; };
+		2D1A83891755747C0090FA77 /* RCData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCData.m; sourceTree = "<group>"; };
+		2D1A838A1755747C0090FA77 /* RCRemoteObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRemoteObjects.h; sourceTree = "<group>"; };
+		2D1A838B1755747C0090FA77 /* RCRemoteObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRemoteObjects.m; sourceTree = "<group>"; };
+		2D1A838C1755747C0090FA77 /* RCRestAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRestAdapter.h; sourceTree = "<group>"; };
+		2D1A838D1755747C0090FA77 /* RCRestAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRestAdapter.m; sourceTree = "<group>"; };
+		2D1A83961755771A0090FA77 /* RemotingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemotingClient.h; sourceTree = "<group>"; };
+		2D1A8397175579960090FA77 /* RCRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRemoteObject.h; sourceTree = "<group>"; };
+		2D1A8398175579960090FA77 /* RCRemoteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRemoteObject.m; sourceTree = "<group>"; };
+		2DFE85EA175572D7008BCF31 /* libRemotingClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRemotingClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DFE85ED175572D7008BCF31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2DFE85F1175572D7008BCF31 /* RemotingClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RemotingClient-Prefix.pch"; sourceTree = "<group>"; };
+		2DFE85FB175572D7008BCF31 /* RemotingClientTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemotingClientTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DFE85FC175572D7008BCF31 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2DFE85FE175572D7008BCF31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		2DFE8606175572D7008BCF31 /* RemotingClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RemotingClientTests-Info.plist"; sourceTree = "<group>"; };
+		2DFE8608175572D7008BCF31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DFE860A175572D7008BCF31 /* RemotingClientTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemotingClientTests.h; sourceTree = "<group>"; };
+		2DFE860B175572D7008BCF31 /* RemotingClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemotingClientTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DFE85E7175572D7008BCF31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DFE85EE175572D7008BCF31 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DFE85F7175572D7008BCF31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DFE85FD175572D7008BCF31 /* SenTestingKit.framework in Frameworks */,
+				2DFE85FF175572D7008BCF31 /* UIKit.framework in Frameworks */,
+				2DFE8600175572D7008BCF31 /* Foundation.framework in Frameworks */,
+				2DFE8603175572D7008BCF31 /* libRemotingClient.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DFE85E1175572D7008BCF31 = {
+			isa = PBXGroup;
+			children = (
+				2DFE85EF175572D7008BCF31 /* RemotingClient */,
+				2DFE8604175572D7008BCF31 /* RemotingClientTests */,
+				2DFE85EC175572D7008BCF31 /* Frameworks */,
+				2DFE85EB175572D7008BCF31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DFE85EB175572D7008BCF31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DFE85EA175572D7008BCF31 /* libRemotingClient.a */,
+				2DFE85FB175572D7008BCF31 /* RemotingClientTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DFE85EC175572D7008BCF31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DFE85ED175572D7008BCF31 /* Foundation.framework */,
+				2DFE85FC175572D7008BCF31 /* SenTestingKit.framework */,
+				2DFE85FE175572D7008BCF31 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DFE85EF175572D7008BCF31 /* RemotingClient */ = {
+			isa = PBXGroup;
+			children = (
+				2D1A83961755771A0090FA77 /* RemotingClient.h */,
+				2D1A83861755747C0090FA77 /* RCAdapter.h */,
+				2D1A83871755747C0090FA77 /* RCAdapter.m */,
+				2D1A83881755747C0090FA77 /* RCData.h */,
+				2D1A83891755747C0090FA77 /* RCData.m */,
+				2D1A838A1755747C0090FA77 /* RCRemoteObjects.h */,
+				2D1A838B1755747C0090FA77 /* RCRemoteObjects.m */,
+				2D1A838C1755747C0090FA77 /* RCRestAdapter.h */,
+				2D1A838D1755747C0090FA77 /* RCRestAdapter.m */,
+				2DFE85F0175572D7008BCF31 /* Supporting Files */,
+				2D1A8397175579960090FA77 /* RCRemoteObject.h */,
+				2D1A8398175579960090FA77 /* RCRemoteObject.m */,
+			);
+			path = RemotingClient;
+			sourceTree = "<group>";
+		};
+		2DFE85F0175572D7008BCF31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DFE85F1175572D7008BCF31 /* RemotingClient-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2DFE8604175572D7008BCF31 /* RemotingClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				2DFE860A175572D7008BCF31 /* RemotingClientTests.h */,
+				2DFE860B175572D7008BCF31 /* RemotingClientTests.m */,
+				2DFE8605175572D7008BCF31 /* Supporting Files */,
+			);
+			path = RemotingClientTests;
+			sourceTree = "<group>";
+		};
+		2DFE8605175572D7008BCF31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DFE8606175572D7008BCF31 /* RemotingClientTests-Info.plist */,
+				2DFE8607175572D7008BCF31 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DFE85E9175572D7008BCF31 /* RemotingClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DFE860F175572D7008BCF31 /* Build configuration list for PBXNativeTarget "RemotingClient" */;
+			buildPhases = (
+				2DFE85E6175572D7008BCF31 /* Sources */,
+				2DFE85E7175572D7008BCF31 /* Frameworks */,
+				2DFE85E8175572D7008BCF31 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemotingClient;
+			productName = RemotingClient;
+			productReference = 2DFE85EA175572D7008BCF31 /* libRemotingClient.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2DFE85FA175572D7008BCF31 /* RemotingClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DFE8612175572D7008BCF31 /* Build configuration list for PBXNativeTarget "RemotingClientTests" */;
+			buildPhases = (
+				2DFE85F6175572D7008BCF31 /* Sources */,
+				2DFE85F7175572D7008BCF31 /* Frameworks */,
+				2DFE85F8175572D7008BCF31 /* Resources */,
+				2DFE85F9175572D7008BCF31 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DFE8602175572D7008BCF31 /* PBXTargetDependency */,
+			);
+			name = RemotingClientTests;
+			productName = RemotingClientTests;
+			productReference = 2DFE85FB175572D7008BCF31 /* RemotingClientTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DFE85E2175572D7008BCF31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ritchie Martori";
+			};
+			buildConfigurationList = 2DFE85E5175572D7008BCF31 /* Build configuration list for PBXProject "RemotingClient" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2DFE85E1175572D7008BCF31;
+			productRefGroup = 2DFE85EB175572D7008BCF31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DFE85E9175572D7008BCF31 /* RemotingClient */,
+				2DFE85FA175572D7008BCF31 /* RemotingClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DFE85F8175572D7008BCF31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DFE8609175572D7008BCF31 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DFE85F9175572D7008BCF31 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DFE85E6175572D7008BCF31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D1A838E1755747C0090FA77 /* RCAdapter.m in Sources */,
+				2D1A83901755747C0090FA77 /* RCData.m in Sources */,
+				2D1A8399175579960090FA77 /* RCRemoteObject.m in Sources */,
+				2D1A83921755747C0090FA77 /* RCRemoteObjects.m in Sources */,
+				2D1A83941755747C0090FA77 /* RCRestAdapter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DFE85F6175572D7008BCF31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D1A839B175580C60090FA77 /* RCRemoteObject.m in Sources */,
+				2D1A83931755747C0090FA77 /* RCRemoteObjects.m in Sources */,
+				2DFE860C175572D7008BCF31 /* RemotingClientTests.m in Sources */,
+				2D1A838F1755747C0090FA77 /* RCAdapter.m in Sources */,
+				2D1A83911755747C0090FA77 /* RCData.m in Sources */,
+				2D1A83951755747C0090FA77 /* RCRestAdapter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DFE8602175572D7008BCF31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DFE85E9175572D7008BCF31 /* RemotingClient */;
+			targetProxy = 2DFE8601175572D7008BCF31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2DFE8607175572D7008BCF31 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DFE8608175572D7008BCF31 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DFE860D175572D7008BCF31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2DFE860E175572D7008BCF31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2DFE8610175572D7008BCF31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/RemotingClient.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemotingClient/RemotingClient-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2DFE8611175572D7008BCF31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/RemotingClient.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemotingClient/RemotingClient-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2DFE8613175572D7008BCF31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemotingClient/RemotingClient-Prefix.pch";
+				INFOPLIST_FILE = "RemotingClientTests/RemotingClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2DFE8614175572D7008BCF31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemotingClient/RemotingClient-Prefix.pch";
+				INFOPLIST_FILE = "RemotingClientTests/RemotingClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DFE85E5175572D7008BCF31 /* Build configuration list for PBXProject "RemotingClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DFE860D175572D7008BCF31 /* Debug */,
+				2DFE860E175572D7008BCF31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DFE860F175572D7008BCF31 /* Build configuration list for PBXNativeTarget "RemotingClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DFE8610175572D7008BCF31 /* Debug */,
+				2DFE8611175572D7008BCF31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DFE8612175572D7008BCF31 /* Build configuration list for PBXNativeTarget "RemotingClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DFE8613175572D7008BCF31 /* Debug */,
+				2DFE8614175572D7008BCF31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DFE85E2175572D7008BCF31 /* Project object */;
+}

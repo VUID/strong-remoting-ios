@@ -20,11 +20,11 @@ RestAdapter.prototype.createRequest = function (methodString, ctorArgs, args, fn
   var route = this.contract.routes[methodString];
   
   // create the request
-  var req = superagent[route.verb || 'post'](this.buildUrl(methodString, args))
+  var req = superagent[route.verb || 'post'](this.buildUrl(methodString, args));
     
   // set the body
   if(ctorArgs) {
-    req.send(ctorArgs)
+    req.send(ctorArgs);
   }
   
   // allow the response to buffer
