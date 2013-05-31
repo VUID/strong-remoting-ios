@@ -16,5 +16,4 @@
 - (void) connect:(NSString *)url;
 - (NSDictionary *) createRequestWithMethodString:(NSString *)methodString andCtorArgs:(NSDictionary *)ctorArgs andArgs:(NSDictionary *)args;
 
-
 @end

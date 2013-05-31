@@ -27,7 +27,16 @@
 
 - (void)testExample
 {
-    RCRemoteObjects *remotes = [RCRemoteObjects initWithUrl:@"http://localhost:3000" andAdapterClass:@"RCRestAdapter"];
+    NSDictionary *contract = @{
+        routes: @{
+            @"Foo.prototype.bar": @{
+                @"verb": "get",
+                @"path": "/foo/:id/bar"
+            }
+        }
+    };
+    
+    RCRemoteObjects *remotes = [RCRemoteObjects initWithUrl:@"http://localhost:3000" andAdapterClass:@"RCRestAdapter" andContract:contract];
     RCRemoteObject *obj = [remotes constructWithName:@"Foo"];
     [obj invokeMethod:@"hello"];
     // STFail(@"Unit tests are not implemented yet in RemotingClientTests");

@@ -62,7 +62,7 @@ RestAdapter.prototype.createRequest = function (methodString, ctorArgs, args, fn
 }
 
 RestAdapter.prototype.buildUrl = function (methodString, args) {
-  var base = this.url
+  var base = this.url;
   var route = this.contract.routes[methodString];
   var path = route.path;
   var pathParts = path.split('/');

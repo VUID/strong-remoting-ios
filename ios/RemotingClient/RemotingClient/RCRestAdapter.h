@@ -10,4 +10,6 @@
 
 @interface RCRestAdapter : RCAdapter
 
+- (NSString *) buildUrlWithMethodString:(NSString *)methodString andArgs:(NSDictionary *)args;
+
 @end
