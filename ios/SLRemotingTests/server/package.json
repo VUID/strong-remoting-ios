@@ -1,0 +1,15 @@
+{
+  "name": "sl-remoting-client-test-server",
+  "version": "0.0.0",
+  "description": "A test server for running sl-remoting-clients integration testing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "???",
+  "dependencies": {
+    "sl-remoting": "git+ssh://git@github.com:strongloop/sl-remoting.git"
+  }
+}
