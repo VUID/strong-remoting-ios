@@ -27,6 +27,11 @@ static name *accessor##Instance = NULL; \
 while (dispatch_semaphore_wait(sen_semaphore, DISPATCH_TIME_NOW)) \
     [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 #define ASYNC_TEST_SIGNAL dispatch_semaphore_signal(sen_semaphore);
+#define ASYNC_TEST_FAILURE_BLOCK \
+^(NSError *error) { \
+    STFail(error.description); \
+    ASYNC_TEST_SIGNAL \
+}
 
 //
 // Helpful methods
