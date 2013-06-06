@@ -12,7 +12,6 @@
 #import "AFJSONRequestOperation.h"
 
 static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
-NSString *SLRESTAdapterDefaultVerb = @"POST";
 
 @interface SLRESTAdapter() {
     AFHTTPClient *client;
@@ -31,6 +30,16 @@ NSString *SLRESTAdapterDefaultVerb = @"POST";
 @implementation SLRESTAdapter
 SINGLETON_IMPLEMENTATION(SLRESTAdapter, defaultAdapter);
 
+- (instancetype)initWithURL:(NSURL *)url {
+    self = [super initWithURL:url];
+    
+    if (self) {
+        self.contract = [SLRESTContract contract];
+    }
+    
+    return self;
+}
+
 - (void)connectToURL:(NSURL *)url {
     client = [AFHTTPClient clientWithBaseURL:url];
 
@@ -41,36 +50,38 @@ SINGLETON_IMPLEMENTATION(SLRESTAdapter, defaultAdapter);
     [client setDefaultHeader:@"Accept" value:@"application/json"];
 }
 
-- (void)invokeStaticMethod:(NSString *)path
+- (void)invokeStaticMethod:(NSString *)method
                 parameters:(NSDictionary *)parameters
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure {
-    path = [path stringByReplacingOccurrencesOfString:@"." withString:@"/"];
+    NSAssert(self.contract, @"Invalid contract.");
     
-    // TODO(schoon) - Custom contract for verb.
+    NSString *verb = [self.contract verbForMethod:method];
+    NSString *path = [self.contract urlForMethod:method parameters:parameters];
     
     [self requestPath:path
-                 verb:SLRESTAdapterDefaultVerb
+                 verb:verb
            parameters:parameters
               success:success
               failure:failure];
 }
 
-- (void)invokeInstanceMethod:(NSString *)path
+- (void)invokeInstanceMethod:(NSString *)method
        constructorParameters:(NSDictionary *)constructorParameters
                   parameters:(NSDictionary *)parameters
                      success:(SLSuccessBlock)success
                      failure:(SLFailureBlock)failure {
-    // TODO(schoon) - Custom contract for method string -> path mapping.
-    
-    path = [path stringByReplacingOccurrencesOfString:@"." withString:@"/"];
+    NSAssert(self.contract, @"Invalid contract.");
     
     NSMutableDictionary *combinedParameters = [NSMutableDictionary dictionary];
     [combinedParameters addEntriesFromDictionary:constructorParameters];
     [combinedParameters addEntriesFromDictionary:parameters];
     
+    NSString *verb = [self.contract verbForMethod:method];
+    NSString *path = [self.contract urlForMethod:method parameters:combinedParameters];
+    
     [self requestPath:path
-                 verb:SLRESTAdapterDefaultVerb
+                 verb:verb
            parameters:combinedParameters
               success:success
               failure:failure];
@@ -82,7 +93,13 @@ SINGLETON_IMPLEMENTATION(SLRESTAdapter, defaultAdapter);
             success:(SLSuccessBlock)success
             failure:(SLFailureBlock)failure {
     NSAssert(self.connected, SLAdapterNotConnectedErrorDescription);
-
+    
+    if ([[verb uppercaseString] isEqualToString:@"GET"]) {
+        client.parameterEncoding = AFFormURLParameterEncoding;
+    } else {
+        client.parameterEncoding = AFJSONParameterEncoding;
+    }
+    
 	NSURLRequest *request = [client requestWithMethod:verb path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);

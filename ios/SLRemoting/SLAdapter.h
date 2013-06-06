@@ -24,12 +24,12 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
 
 - (void)connectToURL:(NSURL *)url;
 
-- (void)invokeStaticMethod:(NSString *)path
+- (void)invokeStaticMethod:(NSString *)method
                 parameters:(NSDictionary *)parameters
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure;
 
-- (void)invokeInstanceMethod:(NSString *)path
+- (void)invokeInstanceMethod:(NSString *)method
        constructorParameters:(NSDictionary *)constructorParameters
                   parameters:(NSDictionary *)parameters
                      success:(SLSuccessBlock)success

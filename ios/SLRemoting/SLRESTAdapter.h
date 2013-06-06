@@ -8,11 +8,12 @@
 
 #import "SLRemotingUtils.h"
 #import "SLAdapter.h"
-
-extern NSString *SLRESTAdapterDefaultVerb;
+#import "SLRESTContract.h"
 
 @interface SLRESTAdapter : SLAdapter
 SINGLETON_INTERFACE(SLRESTAdapter, defaultAdapter);
+
+@property (readwrite, nonatomic, strong) SLRESTContract *contract;
 
 @end
 

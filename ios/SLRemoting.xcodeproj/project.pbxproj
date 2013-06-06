@@ -28,6 +28,8 @@
 		B38F6A25175D59A400E46649 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38F6A23175D598800E46649 /* UIKit.framework */; };
 		B38F6A2B175F9C6100E46649 /* SLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A2A175F9C6100E46649 /* SLObject.m */; };
 		B38F6A30175FA9EF00E46649 /* SLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A2F175FA9EF00E46649 /* SLAdapter.m */; };
+		B38F6A3A1760EA4400E46649 /* SLRESTContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A391760EA4400E46649 /* SLRESTContract.m */; };
+		B38F6A3D1761239B00E46649 /* SLRESTContractTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A3C1761239B00E46649 /* SLRESTContractTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,10 @@
 		B38F6A2A175F9C6100E46649 /* SLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLObject.m; sourceTree = "<group>"; };
 		B38F6A2C175FA70E00E46649 /* SLAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAdapter.h; sourceTree = "<group>"; };
 		B38F6A2F175FA9EF00E46649 /* SLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAdapter.m; sourceTree = "<group>"; };
+		B38F6A381760EA4400E46649 /* SLRESTContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContract.h; sourceTree = "<group>"; };
+		B38F6A391760EA4400E46649 /* SLRESTContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTContract.m; sourceTree = "<group>"; };
+		B38F6A3B1761239B00E46649 /* SLRESTContractTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContractTests.h; sourceTree = "<group>"; };
+		B38F6A3C1761239B00E46649 /* SLRESTContractTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTContractTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +181,8 @@
 				B34A4836175D4BC400574A43 /* Supporting Files */,
 				B38F6A20175D573100E46649 /* SLRESTAdapterTests.h */,
 				B38F6A21175D573100E46649 /* SLRESTAdapterTests.m */,
+				B38F6A3B1761239B00E46649 /* SLRESTContractTests.h */,
+				B38F6A3C1761239B00E46649 /* SLRESTContractTests.m */,
 			);
 			path = SLRemotingTests;
 			sourceTree = "<group>";
@@ -221,6 +229,8 @@
 				B38F6A1A175D508500E46649 /* SLRESTAdapter.m */,
 				B38F6A2C175FA70E00E46649 /* SLAdapter.h */,
 				B38F6A2F175FA9EF00E46649 /* SLAdapter.m */,
+				B38F6A381760EA4400E46649 /* SLRESTContract.h */,
+				B38F6A391760EA4400E46649 /* SLRESTContract.m */,
 			);
 			name = Adapters;
 			sourceTree = "<group>";
@@ -336,6 +346,7 @@
 				B38F6A1F175D527700E46649 /* SLRemotingUtils.m in Sources */,
 				B38F6A2B175F9C6100E46649 /* SLObject.m in Sources */,
 				B38F6A30175FA9EF00E46649 /* SLAdapter.m in Sources */,
+				B38F6A3A1760EA4400E46649 /* SLRESTContract.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B38F6A22175D573100E46649 /* SLRESTAdapterTests.m in Sources */,
+				B38F6A3D1761239B00E46649 /* SLRESTContractTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
