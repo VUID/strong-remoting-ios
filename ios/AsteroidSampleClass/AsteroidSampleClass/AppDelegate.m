@@ -39,11 +39,11 @@
     } failure:fail];
     
     [p nearbyWithLatitude:@40 longitude:@40 success:^(NSArray *weapons) {
-        NSLog(@"findAll Result: %@", weapons);
+        NSLog(@"nearbyWithLatitude Result: %@", weapons);
     } failure:fail];
     
     [p existsWithId:@1 success:^(BOOL exists) {
-        NSLog(@"findwithId Result: %c", exists);
+        NSLog(@"existsWithId Result: %@", exists ? @"YES" : @"NO");
     } failure:fail];
     
     return YES;
