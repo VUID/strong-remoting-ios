@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B34A481F175D4BC400574A43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A481E175D4BC400574A43 /* Foundation.framework */; };
-		B34A4824175D4BC400574A43 /* SLRemoting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B34A4823175D4BC400574A43 /* SLRemoting.h */; };
+		B34A4824175D4BC400574A43 /* SLRemoting.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4823175D4BC400574A43 /* SLRemoting.h */; };
 		B34A482E175D4BC400574A43 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A482D175D4BC400574A43 /* SenTestingKit.framework */; };
 		B34A4831175D4BC400574A43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A481E175D4BC400574A43 /* Foundation.framework */; };
 		B34A4834175D4BC400574A43 /* libSLRemoting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A481B175D4BC400574A43 /* libSLRemoting.a */; };
@@ -21,7 +21,6 @@
 		B34A485F175D4F8600574A43 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A4853175D4F8600574A43 /* AFPropertyListRequestOperation.m */; };
 		B34A4860175D4F8600574A43 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A4855175D4F8600574A43 /* AFURLConnectionOperation.m */; };
 		B34A4861175D4F8600574A43 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A4857175D4F8600574A43 /* AFXMLRequestOperation.m */; };
-		B34A4862175D4F8600574A43 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A4859175D4F8600574A43 /* UIImageView+AFNetworking.m */; };
 		B38F6A1B175D508500E46649 /* SLRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A1A175D508500E46649 /* SLRESTAdapter.m */; };
 		B38F6A1F175D527700E46649 /* SLRemotingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A1E175D527700E46649 /* SLRemotingUtils.m */; };
 		B38F6A22175D573100E46649 /* SLRESTAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A21175D573100E46649 /* SLRESTAdapterTests.m */; };
@@ -30,6 +29,21 @@
 		B38F6A30175FA9EF00E46649 /* SLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A2F175FA9EF00E46649 /* SLAdapter.m */; };
 		B38F6A3A1760EA4400E46649 /* SLRESTContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A391760EA4400E46649 /* SLRESTContract.m */; };
 		B38F6A3D1761239B00E46649 /* SLRESTContractTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B38F6A3C1761239B00E46649 /* SLRESTContractTests.m */; };
+		B38F6A6F1762441700E46649 /* AFHTTPClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4847175D4F8600574A43 /* AFHTTPClient.h */; };
+		B38F6A701762441700E46649 /* AFHTTPRequestOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4849175D4F8600574A43 /* AFHTTPRequestOperation.h */; };
+		B38F6A711762441700E46649 /* AFImageRequestOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A484B175D4F8600574A43 /* AFImageRequestOperation.h */; };
+		B38F6A721762441700E46649 /* AFJSONRequestOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A484D175D4F8600574A43 /* AFJSONRequestOperation.h */; };
+		B38F6A731762441700E46649 /* AFNetworkActivityIndicatorManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A484F175D4F8600574A43 /* AFNetworkActivityIndicatorManager.h */; };
+		B38F6A741762441700E46649 /* AFNetworking.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4851175D4F8600574A43 /* AFNetworking.h */; };
+		B38F6A751762441700E46649 /* AFPropertyListRequestOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4852175D4F8600574A43 /* AFPropertyListRequestOperation.h */; };
+		B38F6A761762441700E46649 /* AFURLConnectionOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4854175D4F8600574A43 /* AFURLConnectionOperation.h */; };
+		B38F6A771762441700E46649 /* AFXMLRequestOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4856175D4F8600574A43 /* AFXMLRequestOperation.h */; };
+		B38F6A781762441700E46649 /* SLRESTAdapter.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B38F6A19175D508500E46649 /* SLRESTAdapter.h */; };
+		B38F6A791762441700E46649 /* SLAdapter.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B38F6A2C175FA70E00E46649 /* SLAdapter.h */; };
+		B38F6A7A1762441700E46649 /* SLRESTContract.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B38F6A381760EA4400E46649 /* SLRESTContract.h */; };
+		B38F6A7B1762441700E46649 /* SLRemoting-Prefix.pch in Copy Files */ = {isa = PBXBuildFile; fileRef = B34A4822175D4BC400574A43 /* SLRemoting-Prefix.pch */; };
+		B38F6A7C1762441700E46649 /* SLRemotingUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B38F6A1D175D527700E46649 /* SLRemotingUtils.h */; };
+		B38F6A7D1762441700E46649 /* SLObject.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B38F6A29175F9C6100E46649 /* SLObject.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,14 +57,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B34A4819175D4BC400574A43 /* CopyFiles */ = {
+		B34A4819175D4BC400574A43 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
+			dstPath = "${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				B34A4824175D4BC400574A43 /* SLRemoting.h in CopyFiles */,
+				B38F6A6F1762441700E46649 /* AFHTTPClient.h in Copy Files */,
+				B38F6A701762441700E46649 /* AFHTTPRequestOperation.h in Copy Files */,
+				B38F6A711762441700E46649 /* AFImageRequestOperation.h in Copy Files */,
+				B38F6A721762441700E46649 /* AFJSONRequestOperation.h in Copy Files */,
+				B38F6A731762441700E46649 /* AFNetworkActivityIndicatorManager.h in Copy Files */,
+				B38F6A741762441700E46649 /* AFNetworking.h in Copy Files */,
+				B38F6A751762441700E46649 /* AFPropertyListRequestOperation.h in Copy Files */,
+				B38F6A761762441700E46649 /* AFURLConnectionOperation.h in Copy Files */,
+				B38F6A771762441700E46649 /* AFXMLRequestOperation.h in Copy Files */,
+				B38F6A781762441700E46649 /* SLRESTAdapter.h in Copy Files */,
+				B38F6A791762441700E46649 /* SLAdapter.h in Copy Files */,
+				B38F6A7A1762441700E46649 /* SLRESTContract.h in Copy Files */,
+				B38F6A7B1762441700E46649 /* SLRemoting-Prefix.pch in Copy Files */,
+				B38F6A7C1762441700E46649 /* SLRemotingUtils.h in Copy Files */,
+				B38F6A7D1762441700E46649 /* SLObject.h in Copy Files */,
+				B34A4824175D4BC400574A43 /* SLRemoting.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -81,8 +111,6 @@
 		B34A4855175D4F8600574A43 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
 		B34A4856175D4F8600574A43 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
 		B34A4857175D4F8600574A43 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		B34A4858175D4F8600574A43 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		B34A4859175D4F8600574A43 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		B38F6A19175D508500E46649 /* SLRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapter.h; sourceTree = "<group>"; };
 		B38F6A1A175D508500E46649 /* SLRESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapter.m; sourceTree = "<group>"; };
 		B38F6A1D175D527700E46649 /* SLRemotingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemotingUtils.h; sourceTree = "<group>"; };
@@ -216,8 +244,6 @@
 				B34A4855175D4F8600574A43 /* AFURLConnectionOperation.m */,
 				B34A4856175D4F8600574A43 /* AFXMLRequestOperation.h */,
 				B34A4857175D4F8600574A43 /* AFXMLRequestOperation.m */,
-				B34A4858175D4F8600574A43 /* UIImageView+AFNetworking.h */,
-				B34A4859175D4F8600574A43 /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";
@@ -244,7 +270,7 @@
 			buildPhases = (
 				B34A4817175D4BC400574A43 /* Sources */,
 				B34A4818175D4BC400574A43 /* Frameworks */,
-				B34A4819175D4BC400574A43 /* CopyFiles */,
+				B34A4819175D4BC400574A43 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -341,7 +367,6 @@
 				B34A485F175D4F8600574A43 /* AFPropertyListRequestOperation.m in Sources */,
 				B34A4860175D4F8600574A43 /* AFURLConnectionOperation.m in Sources */,
 				B34A4861175D4F8600574A43 /* AFXMLRequestOperation.m in Sources */,
-				B34A4862175D4F8600574A43 /* UIImageView+AFNetworking.m in Sources */,
 				B38F6A1B175D508500E46649 /* SLRESTAdapter.m in Sources */,
 				B38F6A1F175D527700E46649 /* SLRemotingUtils.m in Sources */,
 				B38F6A2B175F9C6100E46649 /* SLObject.m in Sources */,
@@ -406,8 +431,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -430,6 +456,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

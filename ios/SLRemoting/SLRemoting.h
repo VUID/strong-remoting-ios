@@ -6,13 +6,6 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-
-// TODO:
-// * Make SLRAdapter a thing.
-// * Make SLRAdapter a non-singleton.
-// * Have an SLRClient that allows plugging in an arbitrary adapter.
-// * Have SLRClient create arbitrary SLRObjects, which can invoke prototype methods.
-
 #ifndef __SL_REMOTING_H
 #define __SL_REMOTING_H
 
