@@ -34,22 +34,45 @@
     dictionary[@"rounds"] = self.rounds;
     dictionary[@"extras"] = self.extras;
     dictionary[@"fireModes"] = self.fireModes;
-    dictionary[@"id"] = self.id;
-    dictionary[@"locationId"] = self.locationId;
+    dictionary[@"id"] = self.id ? self.id : [NSNull null];
+    dictionary[@"locationId"] = self.locationId ? self.id : [NSNull null];
 
     return dictionary;
 }
 
 - (void)save:(SLAWeaponSaveSuccessBlock)success
      failure:(SLFailureBlock)failure {
+    if (self.id) {
+        [self invokeMethod:@"save" parameters:@{
+         @"data": [self dictionary]
+         } success:^(id value) {
+             success();
+        } failure:failure];
+    } else {
+        // Call "create" instead, establish id.
+        [self invokeMethod:@"create" parameters:@{
+            @"data":[self dictionary]
+         } success:^(id value) {
+            // TODO(schoon) - Update the creationParameters.
+             self.id = value[@"id"];
+             success();
+        } failure:failure];
+    }
 }
 
 - (void)destroy:(SLAWeaponDestroySuccessBlock)success
         failure:(SLFailureBlock)failure {
+    NSAssert(self.id, @"Invalid SLAWeapon.");
+
+    [self invokeMethod:@"destroy" parameters:@{
+     @"data": [self dictionary]
+     } success:^(id value) {
+        success();
+    } failure:failure];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<SLAWeapon %@>", self.name];
+    return [NSString stringWithFormat:@"<SLAWeapon(%@) %@>", self.id ? self.id : @"new", self.name];
 }
 
 @end
@@ -59,6 +82,10 @@
 + (instancetype)prototype {
     return [self prototypeWithName:@"weapons"];
 }
+
+- (SLAWeapon *)weapon {
+    return [SLAWeapon objectWithPrototype:self parameters:@{}];
+};
 
 - (SLAWeapon *)weaponWithDictionary:(NSDictionary *)dictionary {
     SLAWeapon *weapon = [SLAWeapon objectWithPrototype:self parameters:@{@"id": dictionary[@"id"]}];
@@ -86,11 +113,11 @@
      }
                      success:^(id value) {
                          NSMutableArray *weapons = [NSMutableArray array];
-                         
+
                          [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                              [weapons addObject:[self weaponWithDictionary:obj]];
                          }];
-                         
+
                          success(weapons);
                      }
                      failure:failure];
@@ -104,7 +131,7 @@ failure:(SLFailureBlock)failure {
      @"id": _id
      }
                      success:^(id value) {
-                         success([@1 isEqualToNumber:value[@"data"]] ? YES : NO);
+                         success([@1 isEqual:value[@"data"]] ? YES : NO);
                      }
                      failure:failure];
 }
@@ -130,11 +157,11 @@ failure:(SLFailureBlock)failure {
      }
                      success:^(id value) {
                          NSMutableArray *weapons = [NSMutableArray array];
-                         
+
                          [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                              [weapons addObject:[self weaponWithDictionary:obj]];
                          }];
-                         
+
                          success(weapons);
                      }
                      failure:failure];

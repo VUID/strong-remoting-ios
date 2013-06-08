@@ -29,6 +29,10 @@
     
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/weapons/:id" verb:@"GET"] forMethod:@"weapons.find"];
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/weapons" verb:@"GET"] forMethod:@"weapons.all"];
+    [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/weapons/:id" verb:@"DELETE"] forMethod:@"weapons.prototype.destroy"];
+    [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/weapons/:id" verb:@"PUT"] forMethod:@"weapons.prototype.save"];
+    // HACK(schoon) - Because save is overloaded, added client-only "create" method - should exist for reals for generated code sanity.
+    [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/weapons" verb:@"POST"] forMethod:@"weapons.prototype.create"];
     
     [p findAll:^(NSArray *weapons) {
         NSLog(@"findAll Result: %@", weapons);
@@ -36,6 +40,15 @@
     
     [p findWithId:@1 success:^(SLAWeapon *weapon) {
         NSLog(@"findwithId Result: %@", weapon);
+        weapon.rounds = @42;
+        [weapon save:^{
+        } failure:fail];
+    } failure:fail];
+    
+    [p findWithId:@2 success:^(SLAWeapon *weapon) {
+        NSLog(@"findwithId Result: %@", weapon);
+        [weapon destroy:^{
+        } failure:fail];
     } failure:fail];
     
     [p nearbyWithLatitude:@40 longitude:@40 success:^(NSArray *weapons) {
@@ -45,6 +58,22 @@
     [p existsWithId:@1 success:^(BOOL exists) {
         NSLog(@"existsWithId Result: %@", exists ? @"YES" : @"NO");
     } failure:fail];
+    
+    SLAWeapon __block *weapon = [p weapon];
+    
+    weapon.name = @"Schooninator";
+    weapon.audibleRange = @2;
+    weapon.effectiveRange = @2000;
+    weapon.rounds = @1;
+    weapon.extras = @"Silencer";
+    weapon.fireModes = @"Single";
+   
+    NSLog(@"Saving: %@...", weapon);
+    [weapon save:^{
+        NSLog(@"Saved: %@", weapon);
+    } failure:^(NSError *error) {
+        NSLog(@"Save failure: %@", error);
+    }];
     
     return YES;
 }

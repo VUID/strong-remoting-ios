@@ -35,6 +35,8 @@ typedef void (^SLAWeaponDestroySuccessBlock)();
 
 + (instancetype)prototype;
 
+- (SLAWeapon *)weapon;
+
 typedef void (^SLAWeaponNearbySuccessBlock)(NSArray *weapons);
 - (void)nearbyWithLatitude:(NSNumber *)latitude
                  longitude:(NSNumber *)longitude
@@ -46,6 +48,7 @@ typedef void (^SLAWeaponExistsSuccessBlock)(BOOL exists);
              success:(SLAWeaponExistsSuccessBlock)success
              failure:(SLFailureBlock)failure;
 
+// TODO(schoon) - Keyword function parameter names need to be mangled.
 typedef void (^SLAWeaponFindSuccessBlock)(SLAWeapon *weapon);
 - (void)findWithId:(NSNumber *)_id
            success:(SLAWeaponFindSuccessBlock)success
