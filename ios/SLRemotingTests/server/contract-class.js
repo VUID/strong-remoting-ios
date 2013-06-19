@@ -14,6 +14,7 @@ ContractClass.sharedCtor = function (name, callback) {
 ContractClass.shared = true;
 ContractClass.sharedCtor.accepts = [{ arg: 'name', type: 'string' }];
 ContractClass.sharedCtor.http = { path: '/:name' };
+ContractClass.sharedCtor.returns = { type: 'object', root: true };
 
 /**
  * Returns the ContractClass instance's name.

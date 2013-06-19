@@ -13,6 +13,7 @@ SimpleClass.sharedCtor = function (name, callback) {
 };
 SimpleClass.shared = true;
 SimpleClass.sharedCtor.accepts = [{ arg: 'name', type: 'string' }];
+SimpleClass.sharedCtor.returns = { type: 'object', root: true };
 
 /**
  * Returns the SimpleClass instance's name.
