@@ -39,6 +39,21 @@
     [super tearDown];
 }
 
+- (void)testAddItemsFromContract {
+    SLRESTContract *parent = [SLRESTContract contract];
+    SLRESTContract *child = [SLRESTContract contract];
+
+    [parent addItem:[SLRESTContractItem itemWithPattern:@"/wrong/route" verb:@"OOPS"] forMethod:@"test.route"];
+    [child addItem:[SLRESTContractItem itemWithPattern:@"/test/route" verb:@"GET"] forMethod:@"test.route"];
+    [child addItem:[SLRESTContractItem itemWithPattern:@"/new/route" verb:@"POST"] forMethod:@"new.route"];
+
+    [parent addItemsFromContract:child];
+    STAssertTrue([[parent urlForMethod:@"test.route" parameters:@{}] isEqualToString:@"/test/route"], @"Wrong URL.");
+    STAssertTrue([[parent verbForMethod:@"test.route"] isEqualToString:@"GET"], @"Wrong verb.");
+    STAssertTrue([[parent urlForMethod:@"new.route" parameters:@{}] isEqualToString:@"/new/route"], @"Wrong URL.");
+    STAssertTrue([[parent verbForMethod:@"new.route"] isEqualToString:@"POST"], @"Wrong verb.");
+}
+
 - (void)testGet {
     ASYNC_TEST_START
     [adapter invokeStaticMethod:@"contract.getSecret"
