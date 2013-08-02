@@ -1,10 +1,9 @@
-//
-//  SLRESTContract.m
-//  SLRemoting
-//
-//  Created by Michael Schoonmaker on 6/6/13.
-//  Copyright (c) 2013 StrongLoop. All rights reserved.
-//
+/**
+ * @file SLRESTContract.m
+ *
+ * @author Michael Schoonmaker
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
 
 #import "SLRESTContract.h"
 
@@ -41,12 +40,12 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 - (instancetype)initWithPattern:(NSString *)pattern
                            verb:(NSString *)verb {
     self = [super init];
-    
+
     if (self) {
         self.pattern = pattern;
         self.verb = verb;
     }
-    
+
     return self;
 }
 
@@ -60,11 +59,11 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 
 - (instancetype)init {
     self = [super init];
-    
+
     if (self) {
         self.dict = [NSMutableDictionary dictionary];
     }
-    
+
     return self;
 }
 
@@ -72,7 +71,7 @@ NSString *SLRESTContractDefaultVerb = @"POST";
       forMethod:(NSString *)method {
     NSParameterAssert(item);
     NSParameterAssert(method);
-    
+
     ((NSMutableDictionary *)self.dict)[method] = item;
 }
 
@@ -85,9 +84,9 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 - (NSString *)urlForMethod:(NSString *)method
                 parameters:(NSDictionary *)parameters {
     NSParameterAssert(method);
-    
+
     NSString *pattern = [self patternForMethod:method];
-    
+
     if (pattern) {
         return [self urlWithPattern:pattern parameters:parameters];
     } else {
@@ -97,9 +96,9 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 
 - (NSString *)verbForMethod:(NSString *)method {
     NSParameterAssert(method);
-    
+
     SLRESTContractItem *item = (SLRESTContractItem *)self.dict[method];
-    
+
     return item ? item.verb : @"POST";
 }
 
@@ -109,26 +108,26 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 
 - (NSString *)patternForMethod:(NSString *)method {
     NSParameterAssert(method);
-    
+
     SLRESTContractItem *item = (SLRESTContractItem *)self.dict[method];
-    
+
     return item ? item.pattern : nil;
 }
 
 - (NSString *)urlWithPattern:(NSString *)pattern
                   parameters:(NSDictionary *)parameters {
     NSParameterAssert(pattern);
-    
+
     if (!parameters) {
         return pattern;
     }
-    
+
     NSString __block *url = pattern;
-    
+
     [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         url = [url stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@":%@", key] withString:[NSString stringWithFormat:@"%@", obj]];
     }];
-    
+
     return url;
 }
 

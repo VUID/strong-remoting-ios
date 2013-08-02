@@ -1,10 +1,9 @@
-//
-//  SLRObject.m
-//  SLRemoting
-//
-//  Created by Michael Schoonmaker on 6/5/13.
-//  Copyright (c) 2013 StrongLoop. All rights reserved.
-//
+/**
+ * @file SLObject.m
+ *
+ * @author Michael Schoonmaker
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
 
 #import "SLObject.h"
 
@@ -33,12 +32,12 @@ NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
 - (instancetype)initWithPrototype:(SLPrototype *)prototype
                        parameters:(NSDictionary *)parameters {
     self = [super init];
-    
+
     if (self) {
         self.prototype = prototype;
         self.creationParameters = parameters;
     }
-    
+
     return self;
 }
 
@@ -51,7 +50,7 @@ NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
     NSString *path = [NSString stringWithFormat:@"%@.prototype.%@",
                       self.prototype.className,
                       name];
-    
+
     [self.prototype.adapter invokeInstanceMethod:path
                            constructorParameters:self.creationParameters
                                       parameters:parameters
@@ -69,11 +68,11 @@ NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
 
 - (instancetype)initWithName:(NSString *)name {
     self = [super init];
-    
+
     if (self) {
         self.className = name;
     }
-    
+
     return self;
 }
 

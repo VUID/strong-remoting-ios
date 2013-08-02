@@ -1,10 +1,9 @@
-//
-//  SLRAdapter.m
-//  SLRemoting
-//
-//  Created by Michael Schoonmaker on 6/5/13.
-//  Copyright (c) 2013 StrongLoop. All rights reserved.
-//
+/**
+ * @file SLAdapter.m
+ *
+ * @author Michael Schoonmaker
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
 
 #import "SLAdapter.h"
 
@@ -32,19 +31,20 @@ NSString *SLAdapterNotConnectedErrorDescription = @"Adapter not connected.";
 
 - (instancetype)initWithURL:(NSURL *)url {
     self = [super init];
-    
+
     if (self) {
         self.connected = NO;
-        
+
         if (url) {
             [self connectToURL:url];
         }
     }
-    
+
     return self;
 }
 
 - (void)connectToURL:(NSURL *)url {
+    // TODO(schoon) - Break out and document error description.
     NSAssert(NO, @"Invalid Adapter.");
 }
 
