@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		B3A5DF7817A8BA3A00037BC0 /* SLRemotingDocs */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B3A5DF7B17A8BA3A00037BC0 /* Build configuration list for PBXAggregateTarget "SLRemotingDocs" */;
+			buildPhases = (
+				B3A5DF7C17A8BA4100037BC0 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = SLRemotingDocs;
+			productName = SLRemotingDocs;
+		};
 		B3DFA5BC17970B5500F656D7 /* SLRemotingFramework */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B3DFA5BD17970B5500F656D7 /* Build configuration list for PBXAggregateTarget "SLRemotingFramework" */;
@@ -326,6 +337,7 @@
 				B34A481A175D4BC400574A43 /* SLRemoting */,
 				B34A482B175D4BC400574A43 /* SLRemotingTests */,
 				B3DFA5BC17970B5500F656D7 /* SLRemotingFramework */,
+				B3A5DF7817A8BA3A00037BC0 /* SLRemotingDocs */,
 			);
 		};
 /* End PBXProject section */
@@ -354,6 +366,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		B3A5DF7C17A8BA4100037BC0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#  Build the doxygen documentation for the project and load the docset into Xcode.\n\n#  Use the following to adjust the value of the $DOXYGEN_PATH User-Defined Setting:\n#    Binary install location: /Applications/Doxygen.app/Contents/Resources/doxygen\n#    Source build install location: /usr/local/bin/doxygen\n\n#  If the config file doesn't exist, run 'doxygen -g $SOURCE_ROOT/doxygen.config' to\n#   a get default file.\n\nif ! [ -f $SOURCE_ROOT/doxygen.config ]\nthen\necho doxygen config file does not exist\nexit 1\nfi\n\n$DOXYGEN_PATH $SOURCE_ROOT/doxygen.config\n\nexit 0";
 		};
 		B3DFA59A179705A100F656D7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -555,6 +580,22 @@
 			};
 			name = Release;
 		};
+		B3A5DF7917A8BA3A00037BC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DOXYGEN_PATH = /usr/local/bin/doxygen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B3A5DF7A17A8BA3A00037BC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DOXYGEN_PATH = /usr/local/bin/doxygen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B3DFA5BE17970B5500F656D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -599,6 +640,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B3A5DF7B17A8BA3A00037BC0 /* Build configuration list for PBXAggregateTarget "SLRemotingDocs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3A5DF7917A8BA3A00037BC0 /* Debug */,
+				B3A5DF7A17A8BA3A00037BC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B3DFA5BD17970B5500F656D7 /* Build configuration list for PBXAggregateTarget "SLRemotingFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -606,6 +656,7 @@
 				B3DFA5BF17970B5500F656D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
