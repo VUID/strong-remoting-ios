@@ -1,4 +1,4 @@
-var remotes = require('sl-remoting').create();
+var remotes = require('strong-remoting').create();
 
 remotes.exports = {
   simple: require('./simple'),
