@@ -1,6 +1,6 @@
 # sl-remoting-clients
 
-Clients for communicating with [sl-remoting](https://github.com/strongloop/sl-remoting) servers.
+Clients for communicating with [strong-remoting](https://github.com/strongloop/strong-remoting) servers.
 
  - [JavaScript](js) (Node.js / HTML5)
  - [iOS](js) (Node.js / HTML5)
