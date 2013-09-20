@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.strongloop.android.remoting"
+    android:versionCode="3"
+    android:versionName="0.0.3" >
+
+    <application />
+    
+    <uses-sdk android:minSdkVersion="8" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
