@@ -15,16 +15,23 @@ RestAdapter.prototype.connect = function (url) {
   this.url = url;
 }
 
+RestAdapter.prototype.addRoutes = function(routes) {
+  Object.keys(routes).forEach(function(methodString) {
+    this.contract.routes[methodString] = routes[methodString];
+  }.bind(this));
+}
+
 RestAdapter.prototype.createRequest = function (methodString, ctorArgs, args, fn) {
   var self = this;
   var route = this.contract.routes[methodString];
-  
+
+  var url = this.buildUrl(methodString, ctorArgs || args);
   // create the request
-  var req = superagent[route.verb || 'post'](this.buildUrl(methodString, args));
+  var req = superagent[route.verb.toLowerCase() || 'post'](url);
     
   // set the body
   if(ctorArgs) {
-    req.send(ctorArgs);
+    req.send(args);
   }
   
   // allow the response to buffer
@@ -75,11 +82,14 @@ RestAdapter.prototype.buildUrl = function (methodString, args) {
     var val = isKey && args && args[part.replace(':', '')];
     
     if(!isKey) {
-      finalPathParts.push(part);
+      if (part !== '')
+        finalPathParts.push(part);
     } else if(val) {
       finalPathParts.push(val);
     }
   }
+
+  if (base[base.length-1] != '/') base += '/';
 
   // build url
   return base + finalPathParts.join('/') + argString;
