@@ -9,12 +9,12 @@
 
 @interface SLObject()
 
-@property (readwrite, nonatomic, weak) SLPrototype *prototype;
+@property (readwrite, nonatomic, weak) SLRepository *repository;
 @property (readwrite, nonatomic, strong) NSDictionary *creationParameters;
 
 @end
 
-@interface SLPrototype()
+@interface SLRepository()
 
 @property (readwrite, nonatomic, copy) NSString *className;
 
@@ -22,19 +22,19 @@
 
 @implementation SLObject
 
-NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
+NSString *SLObjectInvalidRepositoryDescription = @"Invalid repository.";
 
-+ (instancetype)objectWithPrototype:(SLPrototype *)prototype
++ (instancetype)objectWithRepository:(SLRepository *)repository
                          parameters:(NSDictionary *)parameters {
-    return [[self alloc] initWithPrototype:prototype parameters:parameters];
+    return [[self alloc] initWithRepository:repository parameters:parameters];
 }
 
-- (instancetype)initWithPrototype:(SLPrototype *)prototype
+- (instancetype)initWithRepository:(SLRepository *)repository
                        parameters:(NSDictionary *)parameters {
     self = [super init];
 
     if (self) {
-        self.prototype = prototype;
+        self.repository = repository;
         self.creationParameters = parameters;
     }
 
@@ -45,13 +45,13 @@ NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
           parameters:(NSDictionary *)parameters
              success:(SLSuccessBlock)success
              failure:(SLFailureBlock)failure {
-    NSAssert(self.prototype, SLObjectInvalidPrototypeDescription);
+    NSAssert(self.repository, SLObjectInvalidRepositoryDescription);
 
     NSString *path = [NSString stringWithFormat:@"%@.prototype.%@",
-                      self.prototype.className,
+                      self.repository.className,
                       name];
 
-    [self.prototype.adapter invokeInstanceMethod:path
+    [self.repository.adapter invokeInstanceMethod:path
                            constructorParameters:self.creationParameters
                                       parameters:parameters
                                          success:success
@@ -60,13 +60,13 @@ NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
 
 @end
 
-@implementation SLPrototype
+@implementation SLRepository
 
-+ (instancetype)prototypeWithName:(NSString *)name {
-    return [[self alloc] initWithName:name];
++ (instancetype)repositoryForClassName:(NSString *)name {
+    return [[self alloc] initWithClassName:name];
 }
 
-- (instancetype)initWithName:(NSString *)name {
+- (instancetype)initWithClassName:(NSString *)name {
     self = [super init];
 
     if (self) {
@@ -77,7 +77,7 @@ NSString *SLObjectInvalidPrototypeDescription = @"Invalid prototype.";
 }
 
 - (SLObject *)objectWithParameters:(NSDictionary *)parameters {
-    return [SLObject objectWithPrototype:self parameters:parameters];
+    return [SLObject objectWithRepository:self parameters:parameters];
 }
 
 - (void)invokeStaticMethod:(NSString *)name

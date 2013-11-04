@@ -14,7 +14,7 @@
 @interface SLRESTContractTests() {
     SLRESTAdapter *adapter;
     SLRESTContract *contract;
-    SLPrototype *TestClass;
+    SLRepository *TestClass;
 }
 
 @end
@@ -31,7 +31,7 @@
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/ContractClass/:name/getName" verb:@"POST"] forMethod:@"ContractClass.prototype.getName"];
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/ContractClass/:name/greet" verb:@"POST"] forMethod:@"ContractClass.prototype.greet"];
     
-    TestClass = [SLPrototype prototypeWithName:@"ContractClass"];
+    TestClass = [SLRepository repositoryForClassName:@"ContractClass"];
     TestClass.adapter = adapter;
 }
 
@@ -108,7 +108,7 @@
     ASYNC_TEST_END
 }
 
-- (void)testPrototypeStatic {
+- (void)testRepositoryStatic {
     ASYNC_TEST_START
     [TestClass invokeStaticMethod:@"getFavoritePerson"
                        parameters:nil
@@ -121,7 +121,7 @@
     ASYNC_TEST_END
 }
 
-- (void)testPrototypeGet {
+- (void)testRepositoryGet {
     ASYNC_TEST_START
     SLObject *test = [TestClass objectWithParameters:@{ @"name": @"somename" }];
     
@@ -136,7 +136,7 @@
     ASYNC_TEST_END
 }
 
-- (void)testPrototypeTransform {
+- (void)testRepositoryTransform {
     ASYNC_TEST_START
     SLObject *test = [TestClass objectWithParameters:@{ @"name": @"somename" }];
     
