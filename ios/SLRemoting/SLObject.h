@@ -95,7 +95,7 @@ extern NSString *SLObjectInvalidRepositoryDescription;
  * @param  name  The remote class name.
  * @return       A repository.
  */
-+ (instancetype)repositoryForClassName:(NSString *)name;
++ (instancetype)repositoryWithClassName:(NSString *)name;
 
 /**
  * Initializes a new Repository, associating it with the named remote class.

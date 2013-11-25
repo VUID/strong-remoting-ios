@@ -62,7 +62,7 @@ NSString *SLObjectInvalidRepositoryDescription = @"Invalid repository.";
 
 @implementation SLRepository
 
-+ (instancetype)repositoryForClassName:(NSString *)name {
++ (instancetype)repositoryWithClassName:(NSString *)name {
     return [[self alloc] initWithClassName:name];
 }
 

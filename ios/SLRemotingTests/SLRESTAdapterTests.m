@@ -24,7 +24,7 @@
     [super setUp];
     
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001"]];
-    TestClass = [SLRepository repositoryForClassName:@"SimpleClass"];
+    TestClass = [SLRepository repositoryWithClassName:@"SimpleClass"];
     TestClass.adapter = adapter;
 }
 
