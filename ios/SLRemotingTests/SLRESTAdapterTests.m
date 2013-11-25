@@ -13,7 +13,7 @@
 
 @interface SLRESTAdapterTests() {
     SLRESTAdapter *adapter;
-    SLPrototype *TestClass;
+    SLRepository *TestClass;
 }
 
 @end
@@ -24,7 +24,7 @@
     [super setUp];
     
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001"]];
-    TestClass = [SLPrototype prototypeWithName:@"SimpleClass"];
+    TestClass = [SLRepository repositoryForClassName:@"SimpleClass"];
     TestClass.adapter = adapter;
 }
 
@@ -86,7 +86,7 @@
     ASYNC_TEST_END
 }
 
-- (void)testPrototypeStatic {
+- (void)testRepositoryStatic {
     ASYNC_TEST_START
     [TestClass invokeStaticMethod:@"getFavoritePerson"
                        parameters:nil
@@ -99,7 +99,7 @@
     ASYNC_TEST_END
 }
 
-- (void)testPrototypeGet {
+- (void)testRepositoryGet {
     ASYNC_TEST_START
     SLObject *test = [TestClass objectWithParameters:@{ @"name": @"somename" }];
     
@@ -114,7 +114,7 @@
     ASYNC_TEST_END
 }
 
-- (void)testPrototypeTransform {
+- (void)testRepositoryTransform {
     ASYNC_TEST_START
     SLObject *test = [TestClass objectWithParameters:@{ @"name": @{ @"somekey": @"somevalue" }}];
     
