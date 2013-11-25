@@ -31,7 +31,7 @@
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/ContractClass/:name/getName" verb:@"POST"] forMethod:@"ContractClass.prototype.getName"];
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/ContractClass/:name/greet" verb:@"POST"] forMethod:@"ContractClass.prototype.greet"];
     
-    TestClass = [SLRepository repositoryForClassName:@"ContractClass"];
+    TestClass = [SLRepository repositoryWithClassName:@"ContractClass"];
     TestClass.adapter = adapter;
 }
 
