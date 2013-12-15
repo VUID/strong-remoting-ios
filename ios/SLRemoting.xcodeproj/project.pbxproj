@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		47E64396185D2E60001878BE /* SLRESTAdapterNonRootTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E64394185D2E60001878BE /* SLRESTAdapterNonRootTests.m */; };
 		B34A481F175D4BC400574A43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A481E175D4BC400574A43 /* Foundation.framework */; };
 		B34A482E175D4BC400574A43 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A482D175D4BC400574A43 /* SenTestingKit.framework */; };
 		B34A4831175D4BC400574A43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34A481E175D4BC400574A43 /* Foundation.framework */; };
@@ -81,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47E64394185D2E60001878BE /* SLRESTAdapterNonRootTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapterNonRootTests.m; sourceTree = "<group>"; };
+		47E64395185D2E60001878BE /* SLRESTAdapterNonRootTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapterNonRootTests.h; sourceTree = "<group>"; };
 		B34A481B175D4BC400574A43 /* libSLRemoting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSLRemoting.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34A481E175D4BC400574A43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B34A4822175D4BC400574A43 /* SLRemoting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLRemoting-Prefix.pch"; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 		B34A4835175D4BC400574A43 /* SLRemotingTests */ = {
 			isa = PBXGroup;
 			children = (
+				47E64394185D2E60001878BE /* SLRESTAdapterNonRootTests.m */,
+				47E64395185D2E60001878BE /* SLRESTAdapterNonRootTests.h */,
 				B34A4836175D4BC400574A43 /* Supporting Files */,
 				B38F6A20175D573100E46649 /* SLRESTAdapterTests.h */,
 				B38F6A21175D573100E46649 /* SLRESTAdapterTests.m */,
@@ -434,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B38F6A22175D573100E46649 /* SLRESTAdapterTests.m in Sources */,
+				47E64396185D2E60001878BE /* SLRESTAdapterNonRootTests.m in Sources */,
 				B38F6A3D1761239B00E46649 /* SLRESTContractTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
