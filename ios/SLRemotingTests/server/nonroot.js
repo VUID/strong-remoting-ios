@@ -12,15 +12,15 @@ getMsg.http = {path: '/api/getMsg'};
 /**
  * Takes a string and returns an updated string.
  */
-function toUpperCase(str, callback) {
-  callback(null, 'UPPERCASE: ' + str.toUpperCase());
+function convertMsg(str, callback) {
+  callback(null, 'CONVERTED: ' + str.toUpperCase());
 }
-toUpperCase.shared = true;
-toUpperCase.accepts = [{ arg: 'str', type: 'string' }];
-toUpperCase.returns = [{ arg: 'data', type: 'string' }];
-toUpperCase.http = {path: '/api/toUpperCase'};
+convertMsg.shared = true;
+convertMsg.accepts = [{ arg: 'str', type: 'string' }];
+convertMsg.returns = [{ arg: 'data', type: 'string' }];
+convertMsg.http = {path: '/api/convertMsg'};
 
 module.exports = {
   getMsg: getMsg,
-  toUpperCase: toUpperCase
+  convertMsg: convertMsg
 };

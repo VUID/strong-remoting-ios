@@ -27,7 +27,7 @@
     [super tearDown];
 }
 
-- (void)testGet {
+- (void)testGetMsg {
     ASYNC_TEST_START
     
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api"]];
@@ -42,22 +42,22 @@
     ASYNC_TEST_END
 }
 
-- (void)testToUpperCase {
+- (void)testConvertMsg {
     ASYNC_TEST_START
     
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api"]];
-    [adapter invokeStaticMethod:@"toUpperCase"
+    [adapter invokeStaticMethod:@"convertMsg"
                      parameters:@{ @"str": @"somevalue" }
                         success:^(id value) {
                             STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"UPPERCASE: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            STAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
-- (void)testGetWithTrailingSlash {
+- (void)testGetMsgWithTrailingSlash {
     ASYNC_TEST_START
     
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api/"]];
@@ -72,15 +72,15 @@
     ASYNC_TEST_END
 }
 
-- (void)testToUpperCaseWithTrailingSlash {
+- (void)testConvertMsgWithTrailingSlash {
     ASYNC_TEST_START
     
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api/"]];
-    [adapter invokeStaticMethod:@"toUpperCase"
+    [adapter invokeStaticMethod:@"convertMsg"
                      parameters:@{ @"str": @"somevalue" }
                         success:^(id value) {
                             STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"UPPERCASE: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            STAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
