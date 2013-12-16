@@ -12,4 +12,3 @@ var server = require('http')
   .createServer(remotes.handler('rest'))
   .listen(3001);
 
-// remotes.handler('socket-io', server);
