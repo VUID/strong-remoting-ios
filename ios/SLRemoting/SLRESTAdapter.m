@@ -39,6 +39,11 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 }
 
 - (void)connectToURL:(NSURL *)url {
+    // Ensure terminal slash for baseURL path, so that NSURL +URLWithString:relativeToURL: works as expected
+    if ([[url path] length] > 0 && ![[url absoluteString] hasSuffix:@"/"]) {
+        url = [url URLByAppendingPathComponent:@"/"];
+    }
+
     client = [AFHTTPClient clientWithBaseURL:url];
 
     self.connected = YES;
@@ -99,6 +104,11 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
         client.parameterEncoding = AFJSONParameterEncoding;
     }
 
+    // Remove the leading / so that the path is treated as relative to the baseURL
+    if(path && [path hasPrefix:@"/"]) {
+        path = [path substringFromIndex:1];
+    }
+    
 	NSURLRequest *request = [client requestWithMethod:verb path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
