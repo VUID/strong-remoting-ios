@@ -118,4 +118,14 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     [client enqueueHTTPRequestOperation:operation];
 }
 
+- (NSString*)accessToken
+{
+    return [client defaultValueForHeader:@"Authorization"];
+}
+
+- (void)setAccessToken:(NSString *)accessToken
+{
+    [client setDefaultHeader:@"Authorization" value:accessToken];
+}
+
 @end
