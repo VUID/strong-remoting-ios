@@ -13,6 +13,7 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 
 @property (readwrite, nonatomic, copy) NSString *pattern;
 @property (readwrite, nonatomic, copy) NSString *verb;
+@property (readwrite, nonatomic, assign) BOOL multipart;
 
 @end
 
@@ -46,6 +47,26 @@ NSString *SLRESTContractDefaultVerb = @"POST";
         self.verb = verb;
     }
 
+    return self;
+}
+
++ (instancetype)itemWithPattern:(NSString *)pattern
+                           verb:(NSString *)verb
+                      multipart:(BOOL)multipart {
+    return [[self alloc] initWithPattern:pattern verb:verb multipart:multipart];
+}
+
+- (instancetype)initWithPattern:(NSString *)pattern
+                           verb:(NSString *)verb
+                      multipart:(BOOL)multipart {
+    self = [super init];
+    
+    if (self) {
+        self.pattern = pattern;
+        self.verb = verb;
+        self.multipart = multipart;
+    }
+    
     return self;
 }
 
@@ -100,6 +121,15 @@ NSString *SLRESTContractDefaultVerb = @"POST";
     SLRESTContractItem *item = (SLRESTContractItem *)self.dict[method];
 
     return item ? item.verb : @"POST";
+}
+
+- (BOOL)multipartForMethod:(NSString *)method
+{
+    NSParameterAssert(method);
+    
+    SLRESTContractItem *item = (SLRESTContractItem *)self.dict[method];
+    
+    return item.multipart;
 }
 
 - (NSString *)urlForMethodWithoutItem:(NSString *)method {
