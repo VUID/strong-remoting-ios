@@ -24,6 +24,13 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
             success:(SLSuccessBlock)success
             failure:(SLFailureBlock)failure;
 
+- (void)requestMultipartPath:(NSString *)path
+                        verb:(NSString *)verb
+                    fileName:(NSString *)fileName
+                    localURL:(NSString *)localURL
+                     success:(SLSuccessBlock)success
+                     failure:(SLFailureBlock)failure;
+
 @end
 
 @implementation SLRESTAdapter
@@ -84,11 +91,20 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     NSString *verb = [self.contract verbForMethod:method];
     NSString *path = [self.contract urlForMethod:method parameters:combinedParameters];
 
-    [self requestPath:path
-                 verb:verb
-           parameters:combinedParameters
-              success:success
-              failure:failure];
+    if ([self.contract multipartForMethod:method]) {
+        [self requestMultipartPath:path
+                              verb:verb
+                          fileName:parameters[@"name"]
+                          localURL:parameters[@"localPath"]
+                           success:success
+                           failure:failure];
+    } else {
+        [self requestPath:path
+                     verb:verb
+               parameters:combinedParameters
+                  success:success
+                  failure:failure];
+    }
 }
 
 - (void)requestPath:(NSString *)path
@@ -105,7 +121,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     }
 
     // Remove the leading / so that the path is treated as relative to the baseURL
-    if(path && [path hasPrefix:@"/"]) {
+    if ([path hasPrefix:@"/"]) {
         path = [path substringFromIndex:1];
     }
     
@@ -115,6 +131,50 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
+    [client enqueueHTTPRequestOperation:operation];
+}
+
+- (void)requestMultipartPath:(NSString *)path
+                        verb:(NSString *)verb
+                    fileName:(NSString *)fileName
+                    localURL:(NSString *)localURL
+                     success:(SLSuccessBlock)success
+                     failure:(SLFailureBlock)failure {
+    NSAssert(self.connected, SLAdapterNotConnectedErrorDescription);
+    
+    // Remove the leading / so that the path is treated as relative to the baseURL
+    if ([path hasPrefix:@"/"]) {
+        path = [path substringFromIndex:1];
+    }
+    
+    NSURLRequest *request;
+    NSOutputStream *outStream = nil;
+    if ([[verb uppercaseString] isEqualToString:@"GET"]) {
+        path = [path stringByAppendingPathComponent:fileName];
+        
+        request = [client requestWithMethod:verb path:path parameters:nil];
+        outStream = [NSOutputStream outputStreamToFileAtPath:[localURL stringByAppendingPathComponent:fileName] append:NO];
+    } else {
+        request = [client multipartFormRequestWithMethod:verb path:path parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+            NSString* fullLocalPath = [localURL stringByAppendingPathComponent:fileName];
+            NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:fullLocalPath error:NULL];
+            [formData appendPartWithInputStream:[[NSInputStream alloc] initWithFileAtPath:fullLocalPath]
+                                           name:@"uploadfiles"
+                                       fileName:fileName
+                                         length:attributes.fileSize
+                                       mimeType:@"multipart/form-data"];
+        }];
+    }
+    
+    AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+    if (outStream != nil) {
+        operation.outputStream = outStream;
+    }
+    
     [client enqueueHTTPRequestOperation:operation];
 }
 
