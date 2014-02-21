@@ -20,6 +20,8 @@ extern NSString *SLRESTContractDefaultVerb;
 @property (readonly, nonatomic, copy) NSString *pattern;
 /** The verb corresponding to this route, e.g. `GET`. */
 @property (readonly, nonatomic, copy) NSString *verb;
+/** Indication that this item is a multipart form mime type. */
+@property (readonly, nonatomic, assign) BOOL multipart;
 
 /**
  * Returns a new item encapsulating the given pattern.
@@ -54,6 +56,26 @@ extern NSString *SLRESTContractDefaultVerb;
  * @return          A new item.
  */
 - (instancetype)initWithPattern:(NSString *)pattern verb:(NSString *)verb;
+
+/**
+ * Returns a new item encapsulating the given pattern, verb and multipart setting.
+ *
+ * @param  pattern   The pattern to represent.
+ * @param  verb      The verb to represent.
+ * @param multiplart Indicates this item is a multipart mime type.
+ * @return           A new item.
+ */
++ (instancetype)itemWithPattern:(NSString *)pattern verb:(NSString *)verb multipart:(BOOL)multipart;
+
+/**
+ * Initializes a new item encapsulating the given pattern and verb.
+ *
+ * @param  pattern   The pattern to represent.
+ * @param  verb      The verb to represent.
+ * @param multiplart Indicates this item is a multipart mime type.
+ * @return           A new item.
+ */
+- (instancetype)initWithPattern:(NSString *)pattern verb:(NSString *)verb multipart:(BOOL)multipart;
 
 @end
 
@@ -140,6 +162,14 @@ extern NSString *SLRESTContractDefaultVerb;
  * @return        The resolved verb.
  */
 - (NSString *)verbForMethod:(NSString *)method;
+
+/**
+ * Returns the multipart setting for the given method string.
+ *
+ * @param  method The method to resolve.
+ * @return        The mutipart setting.
+ */
+- (BOOL)multipartForMethod:(NSString *)method;
 
 /**
  * Generates a fallback URL for a method whose contract has not been customized.
