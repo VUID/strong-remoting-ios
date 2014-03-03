@@ -52,6 +52,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     }
 
     client = [AFHTTPClient clientWithBaseURL:url];
+    client.allowsInvalidSSLCertificate = YES;
 
     self.connected = YES;
 
