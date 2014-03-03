@@ -35,8 +35,8 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
 @implementation SLRESTAdapter
 
-- (instancetype)initWithURL:(NSURL *)url {
-    self = [super initWithURL:url];
+- (instancetype)initWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate {
+    self = [super initWithURL:url allowsInvalidSSLCertificate:allowsInvalidSSLCertificate];
 
     if (self) {
         self.contract = [SLRESTContract contract];
@@ -52,7 +52,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     }
 
     client = [AFHTTPClient clientWithBaseURL:url];
-    client.allowsInvalidSSLCertificate = YES;
+    client.allowsInvalidSSLCertificate = self.allowsInvalidSSLCertificate;
 
     self.connected = YES;
 

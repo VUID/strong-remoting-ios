@@ -23,7 +23,7 @@
 - (void)setUp {
     [super setUp];
     
-    adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"https://localhost:3002"]];
+    adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"https://localhost:3002"] allowsInvalidSSLCertificate:YES];
     TestClass = [SLRepository repositoryWithClassName:@"SimpleClass"];
     TestClass.adapter = adapter;
 }

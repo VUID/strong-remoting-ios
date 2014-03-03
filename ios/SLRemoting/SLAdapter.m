@@ -12,6 +12,7 @@ NSString *SLAdapterNotConnectedErrorDescription = @"Adapter not connected.";
 @interface SLAdapter()
 
 @property (readwrite, nonatomic) BOOL connected;
+@property (readwrite, nonatomic) BOOL allowsInvalidSSLCertificate;
 
 @end
 
@@ -22,7 +23,11 @@ NSString *SLAdapterNotConnectedErrorDescription = @"Adapter not connected.";
 }
 
 + (instancetype)adapterWithURL:(NSURL *)url {
-    return [[self alloc] initWithURL:url];
+    return [self adapterWithURL:url allowsInvalidSSLCertificate:NO];
+}
+
++ (instancetype)adapterWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate {
+    return [[self alloc] initWithURL:url allowsInvalidSSLCertificate:allowsInvalidSSLCertificate];
 }
 
 - (instancetype)init {
@@ -30,16 +35,21 @@ NSString *SLAdapterNotConnectedErrorDescription = @"Adapter not connected.";
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
+    return [self initWithURL:url allowsInvalidSSLCertificate:NO];
+}
+
+- (instancetype)initWithURL:(NSURL *)url  allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate {
     self = [super init];
-
+    
     if (self) {
+        self.allowsInvalidSSLCertificate = allowsInvalidSSLCertificate;
         self.connected = NO;
-
-        if (url) {
+        
+        if(url) {
             [self connectToURL:url];
         }
     }
-
+    
     return self;
 }
 
