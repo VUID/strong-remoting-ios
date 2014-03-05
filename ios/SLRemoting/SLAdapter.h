@@ -62,6 +62,9 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
 /** YES if the SLAdapter is connected to a server, NO otherwise. */
 @property (readonly, nonatomic) BOOL connected;
 
+/** A flag to control if invalid SSL certificates are allowed */
+@property (readonly, nonatomic) BOOL allowsInvalidSSLCertificate;
+
 /**
  * Returns a new, disconnected Adapter.
  *
@@ -78,12 +81,21 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
 + (instancetype)adapterWithURL:(NSURL *)url;
 
 /**
+ * Returns a new Adapter connected to `url`.
+ *
+ * @param  url  The URL to connect to.
+ * @param  allowsInvalidSSLCertificate  Is invalid SSL certificate allowed?
+ * @return      A connected Adapter.
+ */
++ (instancetype)adapterWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate;
+
+/**
  * Initializes a new Adapter, connecting it to `url`.
  *
  * @param  url  The URL to connect to.
  * @return      The connected Adapter.
  */
-- (instancetype)initWithURL:(NSURL *)url;
+- (instancetype)initWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate ;
 
 /**
  * Connects the Adapter to `url`.
