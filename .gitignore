@@ -1,5 +1,4 @@
 .DS_Store
-js/node_modules/sl-remoting
 
-ios/RemotingClient/RemotingClient.xcodeproj/project.xcworkspace/xcuserdata/ritch.xcuserdatad/UserInterfaceState.xcuserstate
+RemotingClient/RemotingClient.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
 

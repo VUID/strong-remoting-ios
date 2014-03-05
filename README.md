@@ -1,15 +1,11 @@
-# strong-remoting-clients
+# strong-remoting-ios
 
-Clients for communicating with [strong-remoting](https://github.com/strongloop/strong-remoting) servers.
+iOS client for communicating with [strong-remoting](https://github.com/strongloop/strong-remoting) servers.
 
- - [JavaScript](js) (Node.js / HTML5)
- - [iOS](ios) (iPhone, iPad, etc.)
- - Android client has its own repository:
-   [strong-remoting-android](https://github.com/strongloop/strong-remoting-android)
- 
-## Your Own Client / More Languages
+## Generating the API Documentation
 
-Implement your own remoting client or client transport adapter by following this [custom client guide](custom-client.md).
-
-
- 
+ 1. Install doxygen.
+ 1. Find the installation location: `which doxygen`. Copy the result.
+ 1. Add the result as a User-Defined Setting in the SLRemotingDocs target.
+ 1. Build the SLRemotingDocs target (the device setting doesn't matter).
+ 1. Profit.
