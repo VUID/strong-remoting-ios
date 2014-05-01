@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFImageRequestOperation.h"
+#import "SLAFImageRequestOperation.h"
 
 static dispatch_queue_t image_request_operation_processing_queue() {
     static dispatch_queue_t af_image_request_operation_processing_queue;
@@ -32,7 +32,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
     return af_image_request_operation_processing_queue;
 }
 
-@interface AFImageRequestOperation ()
+@interface SLAFImageRequestOperation ()
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 @property (readwrite, nonatomic, strong) UIImage *responseImage;
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
@@ -40,7 +40,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
 #endif
 @end
 
-@implementation AFImageRequestOperation
+@implementation SLAFImageRequestOperation
 @synthesize responseImage = _responseImage;
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 @synthesize imageScale = _imageScale;
@@ -75,8 +75,8 @@ static dispatch_queue_t image_request_operation_processing_queue() {
 										 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
 										 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
 {
-    AFImageRequestOperation *requestOperation = [(AFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    SLAFImageRequestOperation *requestOperation = [(SLAFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    [requestOperation setCompletionBlockWithSuccess:^(SLAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             UIImage *image = responseObject;
             if (imageProcessingBlock) {
@@ -93,7 +93,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
                 success(operation.request, operation.response, image);
             }
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(operation.request, operation.response, error);
         }
@@ -200,8 +200,8 @@ static dispatch_queue_t image_request_operation_processing_queue() {
     return [_acceptablePathExtension containsObject:[[request URL] pathExtension]] || [super canProcessRequest:request];
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)setCompletionBlockWithSuccess:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"

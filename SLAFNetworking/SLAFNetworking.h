@@ -26,18 +26,18 @@
 #ifndef _AFNETWORKING_
     #define _AFNETWORKING_
 
-    #import "AFURLConnectionOperation.h"
+    #import "SLAFURLConnectionOperation.h"
 
-    #import "AFHTTPRequestOperation.h"
-    #import "AFJSONRequestOperation.h"
-    #import "AFXMLRequestOperation.h"
-    #import "AFPropertyListRequestOperation.h"
-    #import "AFHTTPClient.h"
+    #import "SLAFHTTPRequestOperation.h"
+    #import "SLAFJSONRequestOperation.h"
+    #import "SLAFXMLRequestOperation.h"
+    #import "SLAFPropertyListRequestOperation.h"
+    #import "SLAFHTTPClient.h"
 
-    #import "AFImageRequestOperation.h"
+    #import "SLAFImageRequestOperation.h"
 
     #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-        #import "AFNetworkActivityIndicatorManager.h"
-        #import "UIImageView+AFNetworking.h"
+        #import "SLAFNetworkActivityIndicatorManager.h"
+        #import "UIImageView+SLAFNetworking.h"
     #endif
 #endif /* _AFNETWORKING_ */

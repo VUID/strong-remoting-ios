@@ -7,13 +7,13 @@
 
 #import "SLRESTAdapter.h"
 
-#import "AFHTTPClient.h"
-#import "AFJSONRequestOperation.h"
+#import "SLAFHTTPClient.h"
+#import "SLAFJSONRequestOperation.h"
 
 static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
 @interface SLRESTAdapter() {
-    AFHTTPClient *client;
+    SLAFHTTPClient *client;
 }
 
 @property (readwrite, nonatomic) BOOL connected;
@@ -51,13 +51,13 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
         url = [url URLByAppendingPathComponent:@"/"];
     }
 
-    client = [AFHTTPClient clientWithBaseURL:url];
+    client = [SLAFHTTPClient clientWithBaseURL:url];
     client.allowsInvalidSSLCertificate = self.allowsInvalidSSLCertificate;
 
     self.connected = YES;
 
     client.parameterEncoding = AFJSONParameterEncoding;
-    [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [client registerHTTPOperationClass:[SLAFJSONRequestOperation class]];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
 }
 
@@ -127,9 +127,9 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     }
     
 	NSURLRequest *request = [client requestWithMethod:verb path:path parameters:parameters];
-    AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    SLAFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(SLAFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
     [client enqueueHTTPRequestOperation:operation];
@@ -167,9 +167,9 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
         }];
     }
     
-    AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    SLAFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(SLAFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
     if (outStream != nil) {

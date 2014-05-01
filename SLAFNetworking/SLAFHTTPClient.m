@@ -22,8 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
+#import "SLAFHTTPClient.h"
+#import "SLAFHTTPRequestOperation.h"
 
 #import <Availability.h>
 
@@ -181,7 +181,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 
 #pragma mark -
 
-@interface AFHTTPClient ()
+@interface SLAFHTTPClient ()
 @property (readwrite, nonatomic, strong) NSURL *baseURL;
 @property (readwrite, nonatomic, strong) NSMutableArray *registeredHTTPOperationClassNames;
 @property (readwrite, nonatomic, strong) NSMutableDictionary *defaultHeaders;
@@ -199,7 +199,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 #endif
 @end
 
-@implementation AFHTTPClient
+@implementation SLAFHTTPClient
 @synthesize baseURL = _baseURL;
 @synthesize stringEncoding = _stringEncoding;
 @synthesize parameterEncoding = _parameterEncoding;
@@ -406,7 +406,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 #pragma mark -
 
 - (BOOL)registerHTTPOperationClass:(Class)operationClass {
-    if (![operationClass isSubclassOfClass:[AFHTTPRequestOperation class]]) {
+    if (![operationClass isSubclassOfClass:[SLAFHTTPRequestOperation class]]) {
         return NO;
     }
 
@@ -533,22 +533,22 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     return [formData requestByFinalizingMultipartFormData];
 }
 
-- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
-                                                    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (SLAFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+                                                    failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
-    AFHTTPRequestOperation *operation = nil;
+    SLAFHTTPRequestOperation *operation = nil;
     
     for (NSString *className in self.registeredHTTPOperationClassNames) {
         Class operationClass = NSClassFromString(className);
         if (operationClass && [operationClass canProcessRequest:urlRequest]) {
-            operation = [(AFHTTPRequestOperation *)[operationClass alloc] initWithRequest:urlRequest];
+            operation = [(SLAFHTTPRequestOperation *)[operationClass alloc] initWithRequest:urlRequest];
             break;
         }
     }
 
     if (!operation) {
-        operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+        operation = [[SLAFHTTPRequestOperation alloc] initWithRequest:urlRequest];
     }
 
     [operation setCompletionBlockWithSuccess:success failure:failure];
@@ -564,7 +564,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 
 #pragma mark -
 
-- (void)enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)operation {
+- (void)enqueueHTTPRequestOperation:(SLAFHTTPRequestOperation *)operation {
     [self.operationQueue addOperation:operation];
 }
 
@@ -577,12 +577,12 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 #pragma clang diagnostic pop
 
     for (NSOperation *operation in [self.operationQueue operations]) {
-        if (![operation isKindOfClass:[AFHTTPRequestOperation class]]) {
+        if (![operation isKindOfClass:[SLAFHTTPRequestOperation class]]) {
             continue;
         }
 
-        BOOL hasMatchingMethod = !method || [method isEqualToString:[[(AFHTTPRequestOperation *)operation request] HTTPMethod]];
-        BOOL hasMatchingPath = [[[[(AFHTTPRequestOperation *)operation request] URL] path] isEqual:pathToBeMatched];
+        BOOL hasMatchingMethod = !method || [method isEqualToString:[[(SLAFHTTPRequestOperation *)operation request] HTTPMethod]];
+        BOOL hasMatchingPath = [[[[(SLAFHTTPRequestOperation *)operation request] URL] path] isEqual:pathToBeMatched];
 
         if (hasMatchingMethod && hasMatchingPath) {
             [operation cancel];
@@ -596,7 +596,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 {
     NSMutableArray *mutableOperations = [NSMutableArray array];
     for (NSURLRequest *request in urlRequests) {
-        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:nil failure:nil];
+        SLAFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:nil failure:nil];
         [mutableOperations addObject:operation];
     }
 
@@ -619,7 +619,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 #endif
     }];
 
-    for (AFHTTPRequestOperation *operation in operations) {
+    for (SLAFHTTPRequestOperation *operation in operations) {
         AFCompletionBlock originalCompletionBlock = [operation.completionBlock copy];
         __weak __typeof(&*operation)weakOperation = operation;
         operation.completionBlock = ^{
@@ -656,51 +656,51 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 
 - (void)getPath:(NSString *)path
      parameters:(NSDictionary *)parameters
-        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+        success:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
 	NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
-    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+    SLAFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
 }
 
 - (void)postPath:(NSString *)path
       parameters:(NSDictionary *)parameters
-         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+         success:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+         failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
 	NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
-	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+	SLAFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
 }
 
 - (void)putPath:(NSString *)path
      parameters:(NSDictionary *)parameters
-        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+        success:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
 	NSURLRequest *request = [self requestWithMethod:@"PUT" path:path parameters:parameters];
-	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+	SLAFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
 }
 
 - (void)deletePath:(NSString *)path
         parameters:(NSDictionary *)parameters
-           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+           success:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+           failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
 	NSURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
-	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+	SLAFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
 }
 
 - (void)patchPath:(NSString *)path
        parameters:(NSDictionary *)parameters
-          success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+          success:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+          failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
-	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+	SLAFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
 }
 
@@ -733,7 +733,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFHTTPClient *HTTPClient = [[[self class] allocWithZone:zone] initWithBaseURL:self.baseURL];
+    SLAFHTTPClient *HTTPClient = [[[self class] allocWithZone:zone] initWithBaseURL:self.baseURL];
 
     HTTPClient.stringEncoding = self.stringEncoding;
     HTTPClient.parameterEncoding = self.parameterEncoding;

@@ -24,7 +24,7 @@
 #import <objc/runtime.h>
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+SLAFNetworking.h"
 
 @interface AFImageCache : NSCache
 - (UIImage *)cachedImageForRequest:(NSURLRequest *)request;
@@ -37,7 +37,7 @@
 static char kAFImageRequestOperationObjectKey;
 
 @interface UIImageView (_AFNetworking)
-@property (readwrite, nonatomic, strong, setter = af_setImageRequestOperation:) AFImageRequestOperation *af_imageRequestOperation;
+@property (readwrite, nonatomic, strong, setter = af_setImageRequestOperation:) SLAFImageRequestOperation *af_imageRequestOperation;
 @end
 
 @implementation UIImageView (_AFNetworking)
@@ -48,11 +48,11 @@ static char kAFImageRequestOperationObjectKey;
 
 @implementation UIImageView (AFNetworking)
 
-- (AFHTTPRequestOperation *)af_imageRequestOperation {
-    return (AFHTTPRequestOperation *)objc_getAssociatedObject(self, &kAFImageRequestOperationObjectKey);
+- (SLAFHTTPRequestOperation *)af_imageRequestOperation {
+    return (SLAFHTTPRequestOperation *)objc_getAssociatedObject(self, &kAFImageRequestOperationObjectKey);
 }
 
-- (void)af_setImageRequestOperation:(AFImageRequestOperation *)imageRequestOperation {
+- (void)af_setImageRequestOperation:(SLAFImageRequestOperation *)imageRequestOperation {
     objc_setAssociatedObject(self, &kAFImageRequestOperationObjectKey, imageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -111,8 +111,8 @@ static char kAFImageRequestOperationObjectKey;
     } else {
         self.image = placeholderImage;
 
-        AFImageRequestOperation *requestOperation = [[AFImageRequestOperation alloc] initWithRequest:urlRequest];
-        [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SLAFImageRequestOperation *requestOperation = [[SLAFImageRequestOperation alloc] initWithRequest:urlRequest];
+        [requestOperation setCompletionBlockWithSuccess:^(SLAFHTTPRequestOperation *operation, id responseObject) {
             if ([urlRequest isEqual:[self.af_imageRequestOperation request]]) {
                 if (success) {
                     success(operation.request, operation.response, responseObject);
@@ -126,7 +126,7 @@ static char kAFImageRequestOperationObjectKey;
             }
 
             [[[self class] af_sharedImageCache] cacheImage:responseObject forRequest:urlRequest];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
             if ([urlRequest isEqual:[self.af_imageRequestOperation request]]) {
                 if (failure) {
                     failure(operation.request, operation.response, error);

@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFXMLRequestOperation.h"
+#import "SLAFXMLRequestOperation.h"
 
 #include <Availability.h>
 
@@ -34,7 +34,7 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
     return af_xml_request_operation_processing_queue;
 }
 
-@interface AFXMLRequestOperation ()
+@interface SLAFXMLRequestOperation ()
 @property (readwrite, nonatomic, strong) NSXMLParser *responseXMLParser;
 #ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
 @property (readwrite, nonatomic, strong) NSXMLDocument *responseXMLDocument;
@@ -42,7 +42,7 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 @property (readwrite, nonatomic, strong) NSError *XMLError;
 @end
 
-@implementation AFXMLRequestOperation
+@implementation SLAFXMLRequestOperation
 @synthesize responseXMLParser = _responseXMLParser;
 #ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
 @synthesize responseXMLDocument = _responseXMLDocument;
@@ -53,14 +53,14 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 											 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser))success
 											 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser))failure
 {
-    AFXMLRequestOperation *requestOperation = [(AFXMLRequestOperation *)[self alloc] initWithRequest:urlRequest];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    SLAFXMLRequestOperation *requestOperation = [(SLAFXMLRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    [requestOperation setCompletionBlockWithSuccess:^(SLAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(operation.request, operation.response, responseObject);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
-            failure(operation.request, operation.response, error, [(AFXMLRequestOperation *)operation responseXMLParser]);
+            failure(operation.request, operation.response, error, [(SLAFXMLRequestOperation *)operation responseXMLParser]);
         }
     }];
 
@@ -136,8 +136,8 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
     return [[[request URL] pathExtension] isEqualToString:@"xml"] || [super canProcessRequest:request];
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)setCompletionBlockWithSuccess:(void (^)(SLAFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"

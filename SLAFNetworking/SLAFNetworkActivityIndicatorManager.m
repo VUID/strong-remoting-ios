@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFNetworkActivityIndicatorManager.h"
+#import "SLAFNetworkActivityIndicatorManager.h"
 
-#import "AFHTTPRequestOperation.h"
+#import "SLAFHTTPRequestOperation.h"
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;
 
-@interface AFNetworkActivityIndicatorManager ()
+@interface SLAFNetworkActivityIndicatorManager ()
 @property (readwrite, nonatomic, assign) NSInteger activityCount;
 @property (readwrite, nonatomic, strong) NSTimer *activityIndicatorVisibilityTimer;
 @property (readonly, nonatomic, getter = isNetworkActivityIndicatorVisible) BOOL networkActivityIndicatorVisible;
@@ -36,14 +36,14 @@ static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;
 - (void)updateNetworkActivityIndicatorVisibilityDelayed;
 @end
 
-@implementation AFNetworkActivityIndicatorManager
+@implementation SLAFNetworkActivityIndicatorManager
 @synthesize activityCount = _activityCount;
 @synthesize activityIndicatorVisibilityTimer = _activityIndicatorVisibilityTimer;
 @synthesize enabled = _enabled;
 @dynamic networkActivityIndicatorVisible;
 
 + (instancetype)sharedManager {
-    static AFNetworkActivityIndicatorManager *_sharedManager = nil;
+    static SLAFNetworkActivityIndicatorManager *_sharedManager = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedManager = [[self alloc] init];
@@ -139,14 +139,14 @@ static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;
 }
 
 - (void)networkingOperationDidStart:(NSNotification *)notification {
-    AFURLConnectionOperation *connectionOperation = [notification object];
+    SLAFURLConnectionOperation *connectionOperation = [notification object];
     if (connectionOperation.request.URL) {
         [self incrementActivityCount];
     }
 }
 
 - (void)networkingOperationDidFinish:(NSNotification *)notification {
-    AFURLConnectionOperation *connectionOperation = [notification object];
+    SLAFURLConnectionOperation *connectionOperation = [notification object];
     if (connectionOperation.request.URL) {
         [self decrementActivityCount];
     }
